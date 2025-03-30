@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/muhammadikbal21/fakestore-performance-test.git'
+                git branch: 'master', url: 'https://github.com/muhammadikbal21/fakestore-performance-test.git'
             }
         }
 
