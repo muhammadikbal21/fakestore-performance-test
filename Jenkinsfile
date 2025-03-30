@@ -14,7 +14,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install' // Jika ada dependensi Node.js untuk K6
+                sh 'export PATH=$PATH:/opt/homebrew/bin && npm install' // Jika ada dependensi Node.js untuk K6
             }
         }
 
