@@ -1,0 +1,45 @@
+langkah-langkah install jenkins
+1. pastikan java sudah terinstall, disarankan java 11 keatas
+2. Gunakan Homebrew untuk install Jenkins:
+ - brew install jenkins-lts
+ Setelah selesai, jalankan Jenkins:
+ - brew services start jenkins-lts
+ Cek apakah Jenkins berjalan:
+ - brew services list
+3. akses jenkins di browser -> http://localhost:8080
+4. Jenkins akan meminta password awal. Dapatkan dengan menjalankan:
+ - cat /Users/$(directory-user-kita)/.jenkins/secrets/initialAdminPassword
+ - contoh: cat /Users/muhammadikbal/.jenkins/secrets/initialAdminPassword
+5. Salin password tersebut, lalu ikuti wizard setup untuk menyelesaikan instalasi.
+6. Setelah masuk ke Jenkins:
+ - pilih "Select plugins to Install"
+ - setelah itu pilih None, lalu klik Install
+ - create admin user
+ - pada halaman Instance Configuration, langsung klik Save and Finish
+7. Create Job nya:
+ - klik New Item
+ - input nama job nya
+ - pada halaman general, langsung klik Save
+8. Install Plugin yang Dibutuhkan
+ Setelah masuk ke Jenkins:
+ - Pergi ke Manage Jenkins > Plugins.
+ - Di tab Available Plugins, cari dan install:
+   - Pipeline
+   - Git
+   - NodeJS (jika ingin pakai Node untuk menjalankan K6)
+   - Performance Plugin (opsional)
+ - Klik Install
+9. Buat file Jenkinsfile di root project lalu masukkan code nya (sudah ada di Jenkinsfile)
+10. Konfigurasi Jenkins Pipeline
+ - Buka Jenkins di browser (http://localhost:8080).
+ - Buat Pipeline Baru:
+  - Masuk ke Dashboard → New Item.
+  - Pilih Pipeline, beri nama (misal: K6-Performance-Test), lalu OK.
+ - Konfigurasi Pipeline:
+  - Pilih Pipeline tab.
+  - Di bagian Definition, pilih Pipeline script from SCM.
+  - Pilih Git, lalu masukkan URL repository (https://github.com/muhammadikbal21/fakestore-performance-test.git).
+  - Branch: master
+  - Script Path: Jenkinsfile
+ - Save & Build:
+  - Klik Save dan jalankan dengan Build Now.
