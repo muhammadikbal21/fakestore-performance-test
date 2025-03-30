@@ -20,13 +20,13 @@ pipeline {
 
         stage('Run Load Test') {
             steps {
-                sh '${K6_PATH} run test/loadTest.js'
+                sh '${K6_PATH} run scenarios/loadTest.js'
             }
         }
 
         stage('Run Stress Test') {
             steps {
-                sh '${K6_PATH} run test/stressTest.js'
+                sh '${K6_PATH} run scenarios/stressTest.js'
             }
         }
 
