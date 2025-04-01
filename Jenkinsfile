@@ -32,7 +32,7 @@ pipeline {
 
         stage('Run Performance Test') {
             steps {
-                sh '${K6_PATH} run test.js'
+                sh '${K6_PATH} run test.js --out json=reports/results.json'
             }
         }
 
@@ -46,7 +46,7 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: 'results/*.json', fingerprint: true
+            archiveArtifacts artifacts: 'reports/*.json', fingerprint: true
         }
     }
 }
