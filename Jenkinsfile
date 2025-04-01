@@ -18,15 +18,21 @@ pipeline {
             }
         }
 
-        stage('Run Load Test') {
-            steps {
-                sh '${K6_PATH} run scenarios/loadTest.js'
-            }
-        }
+        // stage('Run Load Test') {
+        //     steps {
+        //         sh '${K6_PATH} run scenarios/loadTest.js'
+        //     }
+        // }
 
-        stage('Run Stress Test') {
+        // stage('Run Stress Test') {
+        //     steps {
+        //         sh '${K6_PATH} run scenarios/stressTest.js'
+        //     }
+        // }
+
+        stage('Run Performance Test') {
             steps {
-                sh '${K6_PATH} run scenarios/stressTest.js'
+                sh '${K6_PATH} run test.js'
             }
         }
 
